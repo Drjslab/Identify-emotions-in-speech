@@ -3,9 +3,11 @@ from Transcription import Transcription
 
 
 if __name__ == "__main__":
-    utility = Utility()
     transcription = Transcription()
+    
+    utility = Utility()
+    _,waveform, sample_rate = utility.readVoice(fileName="myAudio.wav")
+    output = transcription.transcript(waveform=waveform, sample_rate=sample_rate)
 
-    _,waveform, sample_rate = utility.recordVoice(fileName="myAudio.wav")
-    output = transcription.transcriptFromData(waveform=waveform, sample_rate=sample_rate)
     print(output)
+

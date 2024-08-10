@@ -24,3 +24,8 @@ class Utility:
         torchaudio.save(fileName, audio_tensor.unsqueeze(0), sample_rate)
         print(f"Audio saved as {fileName}")
         return fileName, audio_tensor, sample_rate
+    
+    def readVoice(self, fileName):
+         # Load the audio file
+        fileName, waveform, sample_rate = torchaudio.load(fileName)
+        return fileName, waveform, sample_rate

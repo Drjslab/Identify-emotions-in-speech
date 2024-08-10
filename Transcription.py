@@ -8,7 +8,7 @@ class Transcription:
         # Load the Whisper model
         self.model = whisper.load_model(modelType)
         
-    def transcriptFromData(self,waveform,sample_rate):
+    def transcript(self,waveform,sample_rate):
         # Resample the audio if necessary
         if sample_rate != 16000:
             resampler = torchaudio.transforms.Resample(orig_freq=sample_rate, new_freq=16000)
@@ -20,9 +20,4 @@ class Transcription:
         # Transcribe the audio using Whisper
         result = self.model.transcribe(audio_numpy)
         transcription = result['text']
-        return transcription        
-
-    def transcriptFromFile(self, fileName, sample_rate):
-        # Load the audio file
-        waveform, sample_rate = torchaudio.load(fileName)
-        return  transcriptFromData(waveform=waveform, sample_rate=sample_rate)
+        return transcription
