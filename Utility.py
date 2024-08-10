@@ -27,5 +27,11 @@ class Utility:
     
     def readVoice(self, fileName):
          # Load the audio file
-        fileName, waveform, sample_rate = torchaudio.load(fileName)
+        waveform, sample_rate = torchaudio.load(fileName)
         return fileName, waveform, sample_rate
+    
+    def saveVoice(self, wavefile, fileName, sample_rate):
+        # Save the reconstructed waveform to a new wave file
+        torchaudio.save(fileName, wavefile, sample_rate)
+
+
