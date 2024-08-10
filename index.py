@@ -19,7 +19,8 @@ if __name__ == "__main__":
     transcription = Transcription()
     signalAnalysis = SignalAnalysis()
     utility = Utility()
-    _,waveform, sample_rate = utility.readVoice(fileName="myAudio.wav")
+    _,waveform, sample_rate = utility.readVoice(fileName="03-01-08-01-01-01-04.wav")
+    # _,waveform, sample_rate = utility.recordVoice(fileName="myAudio.wav")
 
     # output = transcription.transcript(waveform=waveform, sample_rate=sample_rate)
     # print(output)
