@@ -30,8 +30,8 @@ class Utility:
         waveform, sample_rate = torchaudio.load(fileName)
         return fileName, waveform, sample_rate
     
-    def saveVoice(self, wavefile, fileName, sample_rate):
+    def saveVoice(self, waveform, fileName, sample_rate):
         # Save the reconstructed waveform to a new wave file
-        torchaudio.save(fileName, wavefile, sample_rate)
+        torchaudio.save(fileName, waveform, sample_rate)
 
 

@@ -29,8 +29,8 @@ class Transcription:
         spectrogram = transform(waveform)
         return spectrogram
     
-    def inverseSpectrograpm(self, spectrogram, sample_rate):
+    def inverseSpectrograpm(self, spectrogram):
         # Convert spectrogram back to waveform using ISTFT
         inverse_transform = T.InverseSpectrogram(n_fft=1024, win_length=None, hop_length=None)
         reconstructed_waveform = inverse_transform(spectrogram)
-        return reconstructed_waveform, sample_rate
+        return reconstructed_waveform
