@@ -2,6 +2,7 @@ import torch
 import torchaudio
 import whisper
 import torchaudio.transforms as T
+import torchaudio.functional as F
 
 
 class Transcription:
@@ -34,3 +35,14 @@ class Transcription:
         inverse_transform = T.InverseSpectrogram(n_fft=1024, win_length=None, hop_length=None)
         reconstructed_waveform = inverse_transform(spectrogram)
         return reconstructed_waveform
+    
+    def getProsodicFeature(self, waveform, sample_rate):
+        # Define the transform to extract pitch
+        pitch =  F.detect_pitch_frequency(waveform, sample_rate)
+
+
+        energy = torch.sqrt(torch.mean(waveform**2, dim=1))
+        duration = waveform.size(1) /sample_rate
+
+        return pitch, energy, duration
+

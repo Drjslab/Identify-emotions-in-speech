@@ -4,6 +4,17 @@ from SignalAnalysis import SignalAnalysis
 import torch
 
 
+def detect_emotion(pitch, energy, duration):
+    if pitch.mean() > 250 and energy.mean() > 0.5:
+        return "Happiness"
+    elif pitch.mean() < 150 and energy.mean() < 0.3 and duration > 1.5:
+        return "Sadness"
+    elif pitch.mean() > 300 and energy.mean() > 0.7 and duration < 1.0:
+        return "Anger"
+    else:
+        return "Neutral"
+
+
 if __name__ == "__main__":
     transcription = Transcription()
     signalAnalysis = SignalAnalysis()
@@ -26,6 +37,12 @@ if __name__ == "__main__":
     # signalAnalysis.showSignal(waveform=inverSptec, sample_rate=sample_rate)
     # utility.saveVoice(fileName="new.wav", waveform=inverSptec, sample_rate=sample_rate)
 
+    pitch, energy, duration = transcription.getProsodicFeature(waveform=waveform, sample_rate=sample_rate)
+    print(pitch, energy, duration) 
+    signalAnalysis.showPitch(pitch)
+
+    emotion = detect_emotion(pitch, energy, duration )
+    print(emotion)
 
 
 
