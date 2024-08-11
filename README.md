@@ -12,11 +12,13 @@ Identify Emotions -> Not working
 ## [TODO] Experiemnt 03 
 NN For Emotion analysis
 -> Multimodel But issue with Backpropagations 
- 
+-> TechoTraon model Text to Voice converter
+
  # 03.01 
- Step 1: Convert data to DATASET (Audio, Text, Emotion)
- Step 2: fineTune Wav2Vect 2.0 
+ Step 1: [done] Convert data to DATASET (Audio, Text, Emotion)
+ Step 2: fineTune Wav2Vect 2.0 <-
  Step 3: Report    
+
 
 
 ## 
